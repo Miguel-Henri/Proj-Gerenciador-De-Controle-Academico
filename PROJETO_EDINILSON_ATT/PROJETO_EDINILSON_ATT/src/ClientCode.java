@@ -1,4 +1,13 @@
 //testando
+
+/*
+cd .\Proj-Gerenciador-De-Controle-Academico\PROJETO_EDINILSON_ATT\PROJETO_EDINILSON_ATT\src\    
+
+javac ClientCode.java  
+
+java ClientCode
+*/
+
 import java.util.Scanner;
 public class ClientCode {
 	public static void main(String[] args) {
