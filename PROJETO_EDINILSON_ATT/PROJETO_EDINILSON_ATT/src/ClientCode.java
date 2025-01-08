@@ -1,4 +1,9 @@
-//testando
+/*
+git pull
+git status
+git commit -m ""
+git push 
+*/
 
 /*
 cd .\Proj-Gerenciador-De-Controle-Academico\PROJETO_EDINILSON_ATT\PROJETO_EDINILSON_ATT\src\    
@@ -7,7 +12,6 @@ javac ClientCode.java
 
 java ClientCode
 */
-
 import java.util.Scanner;
 public class ClientCode {
 	public static void main(String[] args) {
@@ -16,10 +20,10 @@ public class ClientCode {
 		Scanner leitor = new Scanner(System.in);
 		Sistema.AdicionarAdm();
 		
-			
+		
 		do {
 			System.out.println("[1] Efetuar Login");
-			System.out.println("[2] Sair do Sistema"); 
+			System.out.println("[2] Sair do Sistema");
 			escolhaGeral = leitor.nextInt();
 			
 			switch (escolhaGeral) {
@@ -39,7 +43,8 @@ public class ClientCode {
 					do {
 						System.out.println("[1] Cadastrar novo Usuario");
 						System.out.println("[2] Apresentar Usuarios");
-						System.out.println("[3] Sair da conta");
+						System.out.println("[3] Remover Usuario");
+						System.out.println("[4] Sair da conta");
 						escolhaAdm = leitor.nextInt();
 						leitor.nextLine();
 						switch(escolhaAdm) {
@@ -49,10 +54,33 @@ public class ClientCode {
 						case 2:
 							((Administrador) clienteUsuario).ApresentarUsuarios(Sistema.getUsuarios());
 							break;
-						case 3:
+						case 3:	
+							((Administrador) clienteUsuario).DeletarUsuario(Sistema.getUsuarios());
+							break;
+						case 4:
 							clienteUsuario = null;
+							break;
 						}						
-					}while(escolhaAdm!=3);
+					}while(escolhaAdm!=4);
+				}
+				else if(clienteUsuario instanceof Aluno) {
+					int escolhaAluno;
+					do {
+						System.out.println("[1]Exibir Usuario");
+						System.out.println("[2]Sair da conta");
+						escolhaAluno=leitor.nextInt();
+						
+						switch(escolhaAluno) {
+						case 1:
+						
+							break;
+							
+						case 2:
+							clienteUsuario=null;
+							break;
+						}
+					}while(escolhaAluno!=2);
+					
 				}
 			}
 			
