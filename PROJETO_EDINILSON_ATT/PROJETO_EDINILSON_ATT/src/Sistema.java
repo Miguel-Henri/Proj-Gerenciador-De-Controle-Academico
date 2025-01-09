@@ -4,10 +4,14 @@ import java.util.Scanner;
 public class Sistema {
 	private static int rodou=0;
 	private static ArrayList<Usuario> usuarios = new ArrayList<>();
-	
+	private static ArrayList<Turma> turma = new ArrayList<>();
 	
 	public static ArrayList<Usuario> getUsuarios() {
 		return usuarios;
+	}
+
+	public static ArrayList<Turma> getTurma(){
+		return turma;
 	}
 	
 	public static void AdicionarAdm() {
@@ -56,5 +60,6 @@ public class Sistema {
 		return Logado;
 	}
 	
-
+	
+	
 }

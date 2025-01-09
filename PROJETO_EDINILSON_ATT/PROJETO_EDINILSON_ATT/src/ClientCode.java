@@ -44,7 +44,8 @@ public class ClientCode {
 						System.out.println("[1] Cadastrar novo Usuario");
 						System.out.println("[2] Apresentar Usuarios");
 						System.out.println("[3] Remover Usuario");
-						System.out.println("[4] Sair da conta");
+						System.out.println("[4] Mostrar todas as turma");
+						System.out.println("[0] Sair da conta");
 						escolhaAdm = leitor.nextInt();
 						leitor.nextLine();
 						switch(escolhaAdm) {
@@ -58,6 +59,11 @@ public class ClientCode {
 							((Administrador) clienteUsuario).DeletarUsuario(Sistema.getUsuarios());
 							break;
 						case 4:
+							((Administrador) clienteUsuario).verTodasTurma(Sistema.getTurma());
+							break;
+						
+						
+						case 0:
 							clienteUsuario = null;
 							break;
 						}						
@@ -85,7 +91,6 @@ public class ClientCode {
 			}
 			
 		}while(escolhaGeral!=2);
-		
-		
+
 	}
 }

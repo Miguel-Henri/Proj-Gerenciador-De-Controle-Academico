@@ -26,7 +26,7 @@ public class Turma {
         return ano;
     }
 
-    public void getAlunos(){
+    private void getAlunos(){
         for(int i = 0; i < alunos.size(); i++){
             System.out.println("Prontuario " + alunos.get(i).getProntuarioAluno() + " Nome: " + alunos.get(i).getNomeAluno() + " data de nascimento: " + alunos.get(i).getDataNascimentoAluno());
         }
@@ -40,7 +40,7 @@ public class Turma {
     
 
     public void mostrarTurma(){
-        System.out.println("prontuario: " + prontuario);
+        System.out.println("\nprontuario: " + prontuario);
         System.out.println("prontuario da Disciplina: " + disciplina.getProntuario());
         System.out.println("nome da disciplina : " + disciplina.getNomeDisciplina());
         System.out.println("professor : " + professor.getNomeProfessor());
