@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Sistema {
 	private static int rodou=0;
-	private static ArrayList<Usuario> usuarios= new ArrayList<>();
+	private static ArrayList<Usuario> usuarios = new ArrayList<>();
 	
 	
 	public static ArrayList<Usuario> getUsuarios() {

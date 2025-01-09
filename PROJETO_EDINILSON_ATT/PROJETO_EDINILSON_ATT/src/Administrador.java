@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Administrador extends Usuario{
-	
 
 	public Administrador(String Usuario,String Senha) {
 		super(Usuario,Senha);
