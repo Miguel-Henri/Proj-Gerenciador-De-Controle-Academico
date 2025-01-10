@@ -148,15 +148,22 @@ public class Administrador extends Usuario{
 		
 		Disciplina disciplinaTeste3 = new Disciplina("Disciplina789", "quimica");
 		Professor professorTeste3 = new Professor("carlos", "carlos789", "prontuarioProfessor789", "carlos oliveira", "05052012");
-		Aluno alunoTeste5 = new Aluno("aluno345", "aluno345", "alunoprontuario345", "gustavo", "55555555", 2);
+		Aluno alunoTeste5 = new Aluno("aluno345", "aluno345", "alunoprontuario345", "gustavo", "55555555", 3);
 		professorTeste3.atribuirNotas(alunoTeste5, 0, 8.0);
 		professorTeste3.atribuirNotas(alunoTeste5, 1, 9.0);
-		Aluno alunoTeste6 = new Aluno("aluno678", "aluno678", "alunoprontuario678", "alisom", "66666666", 2);
+		professorTeste3.atribuirNotas(alunoTeste5, 2, 9.3);
+		Aluno alunoTeste6 = new Aluno("aluno678", "aluno678", "alunoprontuario678", "alisom", "66666666", 3);
 		professorTeste3.atribuirNotas(alunoTeste6, 0, 9.5);
 		professorTeste3.atribuirNotas(alunoTeste6, 1, 9.7);
+		professorTeste3.atribuirNotas(alunoTeste6, 2, 9.8);
+		Aluno alunoTeste7 = new Aluno("aluno678", "aluno678", "alunoprontuario678", "setimo", "66666666", 3);
+		professorTeste3.atribuirNotas(alunoTeste7, 0, 9.75);
+		professorTeste3.atribuirNotas(alunoTeste7, 1, 9.76);
+		professorTeste3.atribuirNotas(alunoTeste7, 2, 9.77);
 		Turma turmaTeste3 = new Turma("91011", disciplinaTeste3, professorTeste3, 2, "terceiro");
 		turmaTeste3.addAlunoNaTurma(alunoTeste5);
 		turmaTeste3.addAlunoNaTurma(alunoTeste6);
+		turmaTeste3.addAlunoNaTurma(alunoTeste7);
 		turma.add(turmaTeste3);
 
 		System.out.println("todas as turma criadas ate agora");
