@@ -31,4 +31,11 @@ public class Professor extends Usuario{
 	public void setDataNascimentoProfessor(String dataNascimento){
 		this.dataNascimento = dataNascimento;
 	}
+
+	
+    public void atribuirNotas(Aluno aluno, int indice, double nota){
+        aluno.setDefinirNotas(indice, nota);
+        System.out.println("Nota " + nota + " atribuída ao aluno " + aluno);
+
+    }
 }
