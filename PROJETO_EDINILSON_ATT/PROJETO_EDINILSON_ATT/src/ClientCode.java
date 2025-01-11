@@ -1,6 +1,7 @@
 /*
 git pull
 git status
+git add .
 git commit -m ""
 git push 
 */
@@ -11,6 +12,7 @@ cd .\Proj-Gerenciador-De-Controle-Academico\PROJETO_EDINILSON_ATT\PROJETO_EDINIL
 javac ClientCode.java  
 
 java ClientCode
+
 */
 import java.util.Scanner;
 public class ClientCode {
@@ -44,7 +46,14 @@ public class ClientCode {
 						System.out.println("[1] Cadastrar novo Usuario");
 						System.out.println("[2] Apresentar Usuarios");
 						System.out.println("[3] Remover Usuario");
-						System.out.println("[4] Mostrar todas as turma");
+						
+						System.out.println("[4] Criar turma");
+						System.out.println("[5] Add aluno a uma turma pelo nome");
+						System.out.println("[6] Remover um aluno pelo seu prontuario e pelo nome da turma");
+						System.out.println("[7] Remover uma turma pelo nome");
+						System.out.println("[8] Visualizar turma pelo nome");
+						System.out.println("[9] Mostrar todas as turma");
+
 						System.out.println("[0] Sair da conta");
 						escolhaAdm = leitor.nextInt();
 						leitor.nextLine();
@@ -58,7 +67,14 @@ public class ClientCode {
 						case 3:	
 							((Administrador) clienteUsuario).DeletarUsuario(Sistema.getUsuarios());
 							break;
+						
 						case 4:
+							((Administrador) clienteUsuario).criarTurma(Sistema.getTurma());
+							break;
+						
+
+
+						case 9:
 							((Administrador) clienteUsuario).verTodasTurma(Sistema.getTurma());
 							break;
 						
@@ -88,6 +104,7 @@ public class ClientCode {
 					}while(escolhaAluno!=2);
 					
 				}
+				
 			}
 			
 		}while(escolhaGeral!=2);

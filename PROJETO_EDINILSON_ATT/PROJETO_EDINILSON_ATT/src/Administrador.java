@@ -116,7 +116,8 @@ public class Administrador extends Usuario{
 		
 	}
 
-	public void verTodasTurma(ArrayList<Turma> turma){
+	public void criarTurma(ArrayList<Turma> turma){
+		//Vou deixar que essa 3 turmas sejam criadas automaticamente
 		Disciplina disciplinaTeste = new Disciplina("Disciplina123", "matematica");
 		Professor professorTeste = new Professor("joao", "joao123", "prontuarioProfessor123", "joao da silva", "11112005");
 		Aluno alunoTeste1 = new Aluno("gabriel", "aluno123", "alunoprontuario123", "gabriel", "11111111", 2);
@@ -129,9 +130,6 @@ public class Administrador extends Usuario{
 		Turmateste.addAlunoNaTurma(alunoTeste1);
 		Turmateste.addAlunoNaTurma(alunoTeste2);
 		turma.add(Turmateste);
-		
-		/*
-		*/
 		
 		Disciplina disciplinaTeste2 = new Disciplina("Disciplina456", "fisica");
 		Professor professorTeste2 = new Professor("maria", "maria456", "prontuarioProfessor456", "maria de souza", "22022010");
@@ -166,6 +164,101 @@ public class Administrador extends Usuario{
 		turmaTeste3.addAlunoNaTurma(alunoTeste7);
 		turma.add(turmaTeste3);
 
+
+		//aqui começa a parte de criar 
+		Scanner leitor = new Scanner(System.in);
+
+		String prontuarioTurmaNovo;
+		Disciplina disciplinaNovo;
+		String novoProntuarioDisciplina;
+		String novoNomeDaDisciplina;
+
+		Professor professorNovo;
+		String usuarioProfessorNovo;
+		String senhaProfessorNovo;
+		String prontuarioNovoProfessor;
+		String nomeNovoProfessor;	
+		String dataNascimentoNovoProfessor;
+		
+		int qtddDeAvaliacoesNovo;
+		String anoNovo;
+
+		int qtddDeAlunosNaTurma;
+		Aluno alunoNovo;
+
+		System.out.println("Defina o prontuario de uma turma ");
+		prontuarioTurmaNovo = leitor.nextLine();
+
+		System.out.println("Defina o prontuario da disciplina");
+		novoProntuarioDisciplina = leitor.nextLine();
+		System.out.println("Defina o nome da disciplina");
+		novoNomeDaDisciplina = leitor.nextLine();
+		disciplinaNovo = new Disciplina(novoProntuarioDisciplina, novoNomeDaDisciplina);
+		
+		System.out.println("Defina o usuario do professor");
+		usuarioProfessorNovo = leitor.nextLine();
+		System.out.println("Defina a senha do professor");
+		senhaProfessorNovo = leitor.nextLine();
+		System.out.println("Defina o prontuario do professor");
+		prontuarioNovoProfessor = leitor.nextLine();
+		System.out.println("Defina o nome do professor");
+		nomeNovoProfessor = leitor.nextLine();
+		System.out.println("Defina a data de nascimento do professor");
+		dataNascimentoNovoProfessor = leitor.nextLine();
+		professorNovo = new Professor(usuarioProfessorNovo, senhaProfessorNovo, prontuarioNovoProfessor, nomeNovoProfessor, dataNascimentoNovoProfessor);
+
+		System.out.println("Defina a quantidade de avaliações na turma");
+		qtddDeAvaliacoesNovo = leitor.nextInt();
+		leitor.nextLine();
+		System.out.println("Defina o ano da turma");
+		anoNovo = leitor.nextLine();
+		System.out.println("Defina a quantidade de alunos na turma");
+		qtddDeAlunosNaTurma = leitor.nextInt();
+		leitor.nextLine();
+
+		Turma turmaNovo = new Turma(prontuarioTurmaNovo, disciplinaNovo, professorNovo, qtddDeAvaliacoesNovo, anoNovo);
+
+		for(int i = 0; i < qtddDeAlunosNaTurma; i++){
+			String usuarioAlunoNovo;
+			String senhaAlunoNovo;
+			String prontuarioAlunoNovo;
+			String nomeAlunoNovo;
+			String dataDeNascimentoAluno;
+
+
+			System.out.println("Defina o usuario do aluno " + i);
+			usuarioAlunoNovo = leitor.nextLine();
+			System.out.println("Defina a senha do aluno " + i);
+			senhaAlunoNovo = leitor.nextLine();
+			System.out.println("Defina o prontuario do aluno " + i);
+			prontuarioAlunoNovo = leitor.nextLine();
+			System.out.println("Defina o nome do aluno " + i);
+			nomeAlunoNovo = leitor.nextLine();
+			System.out.println("Defina a data de nascimento do aluno " + i);
+			dataDeNascimentoAluno = leitor.nextLine();
+
+			alunoNovo = new Aluno(usuarioAlunoNovo, senhaAlunoNovo, prontuarioAlunoNovo, nomeAlunoNovo, dataDeNascimentoAluno, qtddDeAvaliacoesNovo);
+
+			
+			double[] nota = new double[qtddDeAvaliacoesNovo];
+
+			for(int j = 0; j < qtddDeAvaliacoesNovo; j++){
+				System.out.println("qual vai ser a nota " + j + " do aluno " + i);
+				nota[j] = leitor.nextDouble();
+				leitor.nextLine();
+			}
+
+			for(int h = 0; h < qtddDeAvaliacoesNovo; h++){
+				professorNovo.atribuirNotas(alunoNovo, h, nota[h]);
+			}
+
+			turmaNovo.addAlunoNaTurma(alunoNovo);
+		}
+
+		turma.add(turmaNovo);
+	}
+
+	public void verTodasTurma(ArrayList<Turma> turma){
 		System.out.println("todas as turma criadas ate agora");
 		for(int i = 0; i < turma.size(); i++){
 			turma.get(i).mostrarTurma();
