@@ -1,25 +1,25 @@
 public class Disciplina {
-    private String prontuario;
-    private String nomeDisciplina;
+    private String nomeDisciplina;	
+    private String siglaDisciplina;
+    private String ementa;
+    private int cargaHoraria;
+    private int totalAulas;
+    
+    
+    public Disciplina(String nomeDisciplina,String siglaDisciplina,String ementa,int cargaHoraria
+    		,int totalAulas){
 
-    public Disciplina(String pron, String nomeDisciplina){
-        this.prontuario = pron;
         this.nomeDisciplina = nomeDisciplina;
+        this.siglaDisciplina = siglaDisciplina;
+        this.ementa = ementa;
+        this.cargaHoraria = cargaHoraria;
+        this.totalAulas = totalAulas;
     }
 
-    //get e set
-    public String getProntuario(){
-        return prontuario;
+ 
+    public String getNomeDisciplina() {
+    	return nomeDisciplina;
     }
-    public void setProntuario(String novoPron){
-        prontuario = novoPron;
-    }
-
-    public String getNomeDisciplina(){
-        return nomeDisciplina;
-    }
-    public void setNomeDisciplina(String novoNomeDisci){
-        nomeDisciplina = novoNomeDisci;
-    }
-
+    
+   
 }

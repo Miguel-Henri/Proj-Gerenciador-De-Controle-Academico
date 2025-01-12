@@ -1,7 +1,6 @@
 /*
 git pull
 git status
-git add .
 git commit -m ""
 git push 
 */
@@ -45,14 +44,10 @@ public class ClientCode {
 					do {
 						System.out.println("[1] Cadastrar novo Usuario");
 						System.out.println("[2] Apresentar Usuarios");
-						System.out.println("[3] Remover Usuario");
-						
-						System.out.println("[4] Criar turma");
-						System.out.println("[5] Add aluno a uma turma pelo nome");
-						System.out.println("[6] Remover um aluno pelo seu prontuario e pelo nome da turma");
-						System.out.println("[7] Remover uma turma pelo nome");
-						System.out.println("[8] Visualizar turma pelo nome");
-						System.out.println("[9] Mostrar todas as turma");
+						System.out.println("[3] Remover Usuario");					
+						System.out.println("[4] Criar Disciplina");
+						System.out.println("[5] Criar Turmas");
+						System.out.println("[6] Apresentar Turmas");
 
 						System.out.println("[0] Sair da conta");
 						escolhaAdm = leitor.nextInt();
@@ -69,21 +64,21 @@ public class ClientCode {
 							break;
 						
 						case 4:
-							((Administrador) clienteUsuario).criarTurma(Sistema.getTurma());
+							((Administrador) clienteUsuario).criarDisciplina(Sistema.getDisciplina());
 							break;
-						
-
-
-						case 9:
-							((Administrador) clienteUsuario).verTodasTurma(Sistema.getTurma());
+						case 5:
+							((Administrador) clienteUsuario).CriarTurma(Sistema.getDisciplina(),
+									Sistema.getTurma(), Sistema.getUsuarios());
 							break;
-						
-						
+						case 6:
+							((Administrador) clienteUsuario).ApresentarTurmas(Sistema.getTurma());
+							break;
 						case 0:
+							System.out.println("Deslogando...");
 							clienteUsuario = null;
 							break;
 						}						
-					}while(escolhaAdm!=4);
+					}while(escolhaAdm!=0);
 				}
 				else if(clienteUsuario instanceof Aluno) {
 					int escolhaAluno;

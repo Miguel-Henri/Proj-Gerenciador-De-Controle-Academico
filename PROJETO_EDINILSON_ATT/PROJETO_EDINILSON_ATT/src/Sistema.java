@@ -4,16 +4,20 @@ import java.util.Scanner;
 public class Sistema {
 	private static int rodou=0;
 	private static ArrayList<Usuario> usuarios = new ArrayList<>();
-	private static ArrayList<Turma> turma = new ArrayList<>();
+	private static ArrayList<Turma> turmas = new ArrayList<>();
+	private static ArrayList<Disciplina> disciplina= new ArrayList<>();
 	
 	public static ArrayList<Usuario> getUsuarios() {
 		return usuarios;
 	}
 
 	public static ArrayList<Turma> getTurma(){
-		return turma;
+		return turmas;
 	}
 	
+	public static ArrayList<Disciplina> getDisciplina(){
+		return disciplina;
+	}
 	public static void AdicionarAdm() {
 		if(rodou==0) {
 			Usuario admin = new Administrador("admin","admin");
