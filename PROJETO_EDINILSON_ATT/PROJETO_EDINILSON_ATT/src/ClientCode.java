@@ -98,11 +98,40 @@ public class ClientCode {
 						}
 					}while(escolhaAluno!=2);
 					
+				}else if(clienteUsuario instanceof Professor) {
+					int escolhaProfessor;
+					do {
+						System.out.println("[1]Cadastrar Avaliacao");
+						System.out.println("[2]Inserir notas");
+						System.out.println("[3]Inserir faltas");
+						System.out.println("[4]Exibir relatorio de alunos");
+						System.out.println("[5]Exibir relatorio de turma");
+						escolhaProfessor = leitor.nextInt();
+						
+						switch(escolhaProfessor) {
+						case 1: 
+							((Professor) clienteUsuario).CadastrarAvaliacao(Sistema.getTurma(), clienteUsuario);
+							break;
+							
+							
+						default:
+							break;
+						}
+						
+						
+						
+						
+						
+					}while(escolhaProfessor > 0 && escolhaProfessor < 6);
 				}
+				
+				
 				
 			}
 			
 		}while(escolhaGeral!=2);
+		
+		leitor.close();
 
 	}
 }

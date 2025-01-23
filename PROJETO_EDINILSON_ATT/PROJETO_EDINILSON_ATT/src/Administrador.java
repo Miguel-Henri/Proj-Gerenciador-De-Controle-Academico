@@ -118,9 +118,6 @@ public class Administrador extends Usuario{
 		
 	}
 
-	/*public void criarTurma(ArrayList<Turma> turma,ArrayList<Usuario> usuarios){
-		String
-	}*/
 	
 	public void criarDisciplina(ArrayList<Disciplina> disciplinas) {
 		Disciplina novaDisciplina;
@@ -225,11 +222,27 @@ System.out.println("Nenhuma disciplina cadastrada");
 	
 	
 	public void ApresentarTurmas(ArrayList<Turma> turmas) {
-		for(int i = 0;i<turmas.size();i++) {
-			System.out.println("TURMA "+(i+1));
-			System.out.println("Codigo da Turma: "+turmas.get(i).getCodigoTurma());
-			System.out.println("Disciplina: "+turmas.get(i).getDisciplina().getNomeDisciplina());
-			System.out.println("Professor da turma: "+turmas.get(i).getProfessores().getNomeProfessor());
-		}
+	    for (int i = 0; i < turmas.size(); i++) {
+	        System.out.println("TURMA " + (i + 1));
+	        System.out.println("Codigo da Turma: " + turmas.get(i).getCodigoTurma());
+	        System.out.println("Disciplina: " + turmas.get(i).getDisciplina().getNomeDisciplina());
+
+	        
+	        ArrayList<Professor> professores = turmas.get(i).getProfessores();
+
+	        System.out.print("Professores da turma: ");
+	        if (professores.isEmpty()) {
+	            System.out.println("Nenhum professor atribuido.");
+	        } else {
+	            for (int j = 0; j < professores.size(); j++) {
+	                System.out.print(professores.get(j).getNomeProfessor());
+	                if (j < professores.size() - 1) {
+	                    System.out.print(", ");
+	                }
+	            }
+	            System.out.println("");
+	        }
+	    }
 	}
+
 }

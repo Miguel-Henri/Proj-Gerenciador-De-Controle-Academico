@@ -6,6 +6,7 @@ public class Sistema {
 	private static ArrayList<Usuario> usuarios = new ArrayList<>();
 	private static ArrayList<Turma> turmas = new ArrayList<>();
 	private static ArrayList<Disciplina> disciplina= new ArrayList<>();
+	//private static ArrayList<
 	
 	public static ArrayList<Usuario> getUsuarios() {
 		return usuarios;
@@ -18,6 +19,7 @@ public class Sistema {
 	public static ArrayList<Disciplina> getDisciplina(){
 		return disciplina;
 	}
+	
 	public static void AdicionarAdm() {
 		if(rodou==0) {
 			Usuario admin = new Administrador("admin","admin");
