@@ -1,7 +1,11 @@
+import java.util.ArrayList;
+
 public class Aluno extends Usuario{
 	private String prontuario;
 	private String nome;	
 	private String dataNascimento;	
+	private ArrayList<Double> notas;
+	private int faltas;
 
 	Turma turma;
 	
@@ -12,6 +16,8 @@ public class Aluno extends Usuario{
 		this.prontuario = prontuario;
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
+		this.notas = new ArrayList<>();
+		this.faltas = 0;
 	}
 
 	public Aluno(String Usuario,String Senha,String prontuario,String nome,String dataNascimento, int qtddDeAvaliacoes) {
@@ -48,6 +54,26 @@ public class Aluno extends Usuario{
 			System.out.println("Nota["+i+"]: "+arrayNotas[i]+" de " + getNomeAluno());
 		}
 	}
+
+	public void adicionarNota(double nota) {
+        notas.add(nota);
+    }
+
+    public ArrayList<Double> getNotas() {
+        return notas;
+    }
+
+	public int getFaltas() {
+        return faltas;
+    }
+
+    public void adicionarFaltas(int quantidadeFaltas) {
+        if (quantidadeFaltas < 0) {
+            System.out.println("A quantidade de faltas nao pode ser menor que 0.");
+        } else {
+            this.faltas += quantidadeFaltas; 
+        }
+    }
 
 	public void setDefinirNotas(int indice, double nota){
 		if(indice >= 0 && indice < arrayNotas.length){

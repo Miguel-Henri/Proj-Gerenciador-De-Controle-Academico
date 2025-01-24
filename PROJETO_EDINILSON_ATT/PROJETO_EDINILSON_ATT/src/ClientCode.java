@@ -112,7 +112,9 @@ public class ClientCode {
 						case 1: 
 							((Professor) clienteUsuario).CadastrarAvaliacao(Sistema.getTurma(), clienteUsuario);
 							break;
+						case 2: 
 							
+							break;
 							
 						default:
 							break;

@@ -118,6 +118,9 @@ public class Administrador extends Usuario{
 		
 	}
 
+	/*public void criarTurma(ArrayList<Turma> turma,ArrayList<Usuario> usuarios){
+		String
+	}*/
 	
 	public void criarDisciplina(ArrayList<Disciplina> disciplinas) {
 		Disciplina novaDisciplina;
