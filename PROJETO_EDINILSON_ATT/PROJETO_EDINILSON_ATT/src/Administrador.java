@@ -145,85 +145,86 @@ public class Administrador extends Usuario{
 		disciplinas.add(novaDisciplina);
 	}
 	
-	public void CriarTurma(ArrayList<Disciplina> disciplinas, ArrayList<Turma> turmas,
+public void CriarTurma(ArrayList<Disciplina> disciplinas, ArrayList<Turma> turmas,
             ArrayList<Usuario> usuarios) {
 
-int achouProfessores = 0;
-String codigoTurma = null;
-Disciplina disciplinaEscolhida = null;
-Professor professorEscolhido = null;
-Turma novaTurma;
+	int achouProfessores = 0;
+	String codigoTurma = null;
+	Disciplina disciplinaEscolhida = null;
+	Professor professorEscolhido = null;
+	Turma novaTurma;
 
-Scanner leitor = new Scanner(System.in);
+	Scanner leitor = new Scanner(System.in);
 
-if (disciplinas.size() > 0) {
-for (int i = 0; i < usuarios.size(); i++) {
- if (usuarios.get(i) instanceof Professor) {
-     achouProfessores++;
- }
-}
+	if (disciplinas.size() > 0) {
+	for (int i = 0; i < usuarios.size(); i++) {
+	if (usuarios.get(i) instanceof Professor) {
+		achouProfessores++;
+	}
+	}
 
-if (achouProfessores == 0) {
- System.out.println("Nenhum professor cadastrado");
- return;
-}
+	if (achouProfessores == 0) {
+	System.out.println("Nenhum professor cadastrado");
+	return;
+	}
 
-System.out.println("Insira o código da turma: ");
-codigoTurma = leitor.nextLine();
+	System.out.println("Insira o código da turma: ");
+	codigoTurma = leitor.nextLine();
 
-int escolha;
-do {
- System.out.println("Escolha uma das seguintes disciplinas: ");
- for (int i = 0; i < disciplinas.size(); i++) {
-     System.out.println("[" + i + "] Nome da Disciplina: " +
-             disciplinas.get(i).getNomeDisciplina());
- }
- escolha = leitor.nextInt();
+	int escolha;
+	do {
+	System.out.println("Escolha uma das seguintes disciplinas: ");
+	for (int i = 0; i < disciplinas.size(); i++) {
+		System.out.println("[" + i + "] Nome da Disciplina: " +
+				disciplinas.get(i).getNomeDisciplina());
+	}
+	escolha = leitor.nextInt();
 
- if (escolha >= 0 && escolha < disciplinas.size()) {
-     disciplinaEscolhida = disciplinas.get(escolha);
-     System.out.println("Disciplina escolhida: " +
-             disciplinaEscolhida.getNomeDisciplina());
- } else {
-     System.out.println("Selecionou opção inválida");
- }
-} while (escolha < 0 || escolha >= disciplinas.size());
+	if (escolha >= 0 && escolha < disciplinas.size()) {
+		disciplinaEscolhida = disciplinas.get(escolha);
+		System.out.println("Disciplina escolhida: " +
+				disciplinaEscolhida.getNomeDisciplina());
+	} else {
+		System.out.println("Selecionou opção inválida");
+	}
+	} while (escolha < 0 || escolha >= disciplinas.size());
 
-do {
- System.out.println("Escolha um dos seguintes professores: ");
- ArrayList<Professor> professores = new ArrayList<>();
- for (int i = 0, index = 0; i < usuarios.size(); i++) {
-     if (usuarios.get(i) instanceof Professor) {
-         professores.add((Professor) usuarios.get(i));
-         System.out.println("[" + index + "] Nome Professor: " +
-                 ((Professor) usuarios.get(i)).getNomeProfessor());
-         index++;
-     }
- }
+	do {
+	System.out.println("Escolha um dos seguintes professores: ");
+	ArrayList<Professor> professores = new ArrayList<>();
+	for (int i = 0, index = 0; i < usuarios.size(); i++) {
+		if (usuarios.get(i) instanceof Professor) {
+			professores.add((Professor) usuarios.get(i));
+			System.out.println("[" + index + "] Nome Professor: " +
+					((Professor) usuarios.get(i)).getNomeProfessor());
+			index++;
+		}
+	}
 
- escolha = leitor.nextInt();
+	escolha = leitor.nextInt();
 
- if (escolha >= 0 && escolha < professores.size()) {
-     professorEscolhido = professores.get(escolha);
-     System.out.println("Professor escolhido: " +
-             professorEscolhido.getNomeProfessor());
- } else {
-     System.out.println("Selecionou opção inválida");
- }
-} while (professorEscolhido == null);
+	if (escolha >= 0 && escolha < professores.size()) {
+		professorEscolhido = professores.get(escolha);
+		System.out.println("Professor escolhido: " +
+				professorEscolhido.getNomeProfessor());
+	} else {
+		System.out.println("Selecionou opção inválida");
+	}
+	} while (professorEscolhido == null);
 
-novaTurma = new Turma(codigoTurma, disciplinaEscolhida, professorEscolhido);
-turmas.add(novaTurma);
+	novaTurma = new Turma(codigoTurma, disciplinaEscolhida, professorEscolhido);
+	turmas.add(novaTurma);
 
-System.out.println("Turma criada com sucesso!");
-} else {
-System.out.println("Nenhuma disciplina cadastrada");
-}
+	System.out.println("Turma criada com sucesso!");
+	} else {
+	System.out.println("Nenhuma disciplina cadastrada");
+	}
+	turmas.get(0).getProfessores();
 }
 
 	
 	
-	
+/* 
 	public void ApresentarTurmas(ArrayList<Turma> turmas) {
 	    for (int i = 0; i < turmas.size(); i++) {
 	        System.out.println("TURMA " + (i + 1));
@@ -247,5 +248,5 @@ System.out.println("Nenhuma disciplina cadastrada");
 	        }
 	    }
 	}
-
+ */
 }

@@ -54,8 +54,7 @@ public class Professor extends Usuario {
 			
 				turmaSelecionada.setAvaliacoes(avaliacoes);
 				System.out.println("Avaliacoes cadastradas com sucesso para a turma " + turmaSelecionada.getCodigoTurma() + "!");
-
-				leitor.close();
+				
 			}
 		}else{
 			System.out.println("Apenas professores podem cadastrar avaliacoes");
@@ -74,7 +73,7 @@ public class Professor extends Usuario {
 
 
 
-
+/* 
 
 
 	public void InserirNotas(ArrayList<Turma> turmas, Usuario clienteUsuario) {
@@ -160,11 +159,10 @@ public class Professor extends Usuario {
 
 	public void ExibirRelatorioAlunos(ArrayList<Turma> turmas, Usuario clienteUsuario) {
 		if (clienteUsuario instanceof Professor) {
-			Professor professor = (Professor) clienteUsuario;
 	
 			for (int i = 0; i < turmas.size(); i++) {
 				Turma turma = turmas.get(i);
-				if (turma.getProfessores().contains(professor)) {
+				if (turma.getProfessores().equals(clienteUsuario)) {
 					System.out.println("Relatorio de Alunos da Turma: " + turma.getCodigoTurma());
 					
 					for (int j = 0; j < turma.getAlunos().size(); j++) {
@@ -191,7 +189,7 @@ public class Professor extends Usuario {
 	
 			for (int i = 0; i < turmas.size(); i++) {
 				Turma turma = turmas.get(i);
-				if (turma.getProfessores().contains(professor)) {
+				if (turma.getProfessores().equals(clienteUsuario)) {
 					System.out.println("Relatorio da Turma: " + turma.getCodigoTurma());
 					System.out.println("Quantidade de Alunos: " + turma.getAlunos().size());
 					System.out.println("Professores: ");
@@ -216,18 +214,17 @@ public class Professor extends Usuario {
 
 
 
+*/
 
 
 
 
 
-	
 	private Turma selecionarTurma(ArrayList<Turma> turmas, Professor professor, Scanner leitor) {
 		ArrayList<Turma> turmasDoProfessor = new ArrayList<>();
 		for (int i = 0; i < turmas.size(); i++) {
-			Turma turma = turmas.get(i);
-			if (turma.getProfessores().contains(professor)) {
-				turmasDoProfessor.add(turma);
+			if (turmas.get(i).getProfessores().equals(professor)) {
+				turmasDoProfessor.add(turmas.get(i));
 			}
 		}
 	
@@ -256,7 +253,7 @@ public class Professor extends Usuario {
 
 
 
-
+	
 	private Aluno buscarAlunoNaTurma(Turma turma, String codigoAluno) {
 		for (int i = 0; i < turma.getAlunos().size(); i++) {
 			Aluno aluno = turma.getAlunos().get(i);

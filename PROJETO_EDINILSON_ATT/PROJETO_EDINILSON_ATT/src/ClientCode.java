@@ -71,7 +71,7 @@ public class ClientCode {
 									Sistema.getTurma(), Sistema.getUsuarios());
 							break;
 						case 6:
-							((Administrador) clienteUsuario).ApresentarTurmas(Sistema.getTurma());
+							/*((Administrador) clienteUsuario).ApresentarTurmas(Sistema.getTurma());*/
 							break;
 						case 0:
 							System.out.println("Deslogando...");
@@ -106,6 +106,7 @@ public class ClientCode {
 						System.out.println("[3]Inserir faltas");
 						System.out.println("[4]Exibir relatorio de alunos");
 						System.out.println("[5]Exibir relatorio de turma");
+						System.out.println("[0]Sair");
 						escolhaProfessor = leitor.nextInt();
 						
 						switch(escolhaProfessor) {
@@ -115,7 +116,10 @@ public class ClientCode {
 						case 2: 
 							
 							break;
-							
+						
+						case 0:
+							System.out.println("Saindo...");
+							break;
 						default:
 							break;
 						}

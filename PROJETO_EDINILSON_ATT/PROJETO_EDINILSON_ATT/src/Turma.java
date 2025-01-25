@@ -4,7 +4,7 @@ public class Turma {
 	private String codigoTurma;
 	private Disciplina disciplina;
     private ArrayList<Aluno> alunos;
-	private ArrayList<Professor> professores;
+	private Professor professores;
 	private ArrayList<Avaliacao> avaliacoes;
 	
 	
@@ -12,7 +12,7 @@ public class Turma {
     	this.codigoTurma = codigoTurma;
     	this.disciplina = disciplina;
         this.alunos = new ArrayList<>();
-        professores = new ArrayList<>();
+        professores = usuario;
         avaliacoes = new ArrayList<>();
     }
     
@@ -23,7 +23,7 @@ public class Turma {
     	return disciplina;
     }
      
-    public ArrayList<Professor> getProfessores() {
+    public Professor getProfessores() {
         return professores;
     }
 
