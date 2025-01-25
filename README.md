@@ -1,6 +1,6 @@
 projeto Gerenciador de controle academico do professor Edinilson
 
-Scache
+Gabriel Scache
 tufy
-Indião
+Miguel Henrique
 Gustavo
