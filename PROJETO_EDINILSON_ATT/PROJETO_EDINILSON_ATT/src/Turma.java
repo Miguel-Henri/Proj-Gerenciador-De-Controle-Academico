@@ -1,62 +1,41 @@
 import java.util.ArrayList;
 
 public class Turma {
-	private String codigoTurma;
-	private Disciplina disciplina;
+    private String codigoTurma;
+    private Disciplina disciplina;
     private ArrayList<Aluno> alunos;
-	private Professor professores;
-	private ArrayList<Avaliacao> avaliacoes;
-	
-	
-    public Turma(String codigoTurma,Disciplina disciplina,Professor usuario) {
-    	this.codigoTurma = codigoTurma;
-    	this.disciplina = disciplina;
+    private Professor professores;
+
+    public Turma(String codigoTurma, Disciplina disciplina, Professor usuario) {
+        this.codigoTurma = codigoTurma;
+        this.disciplina = disciplina;
         this.alunos = new ArrayList<>();
-        professores = usuario;
-        avaliacoes = new ArrayList<>();
+        this.professores = usuario;
     }
-    
+
+    // Métodos de acesso
     public String getCodigoTurma() {
-    	return codigoTurma;
+        return codigoTurma;
     }
+
     public Disciplina getDisciplina() {
-    	return disciplina;
+        return disciplina;
     }
-     
+
     public Professor getProfessores() {
         return professores;
     }
-
 
     public ArrayList<Aluno> getAlunos() {
         return alunos;
     }
 
-
     public void adicionarAluno(Aluno aluno) {
-        alunos.add(aluno);
-    }
-
-    public Aluno buscarAluno(String prontuario) {
-
-        for (int i = 0; i < alunos.size(); i++) {
-            if (alunos.get(i).getProntuarioAluno().equals(prontuario)) {
-                return alunos.get(i);
-            }
+        if (!alunos.contains(aluno)) {
+            alunos.add(aluno);
+            System.out.println("Aluno " + aluno.getNomeAluno() + " adicionado à turma " + codigoTurma);
+        } else {
+            System.out.println("O aluno " + aluno.getNomeAluno() + " já está matriculado nesta turma.");
         }
-        return null; 
-    }
-
-
-
-    
-	
-    
-    public ArrayList<Avaliacao> getAvaliacoes() {
-        return avaliacoes;
-    }
-
-    public void setAvaliacoes(ArrayList<Avaliacao> avaliacoes) {
-        this.avaliacoes = avaliacoes;
     }
 }

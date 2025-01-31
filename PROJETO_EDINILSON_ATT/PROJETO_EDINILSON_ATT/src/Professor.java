@@ -73,8 +73,6 @@ public class Professor extends Usuario {
 
 
 
-/* 
-
 
 	public void InserirNotas(ArrayList<Turma> turmas, Usuario clienteUsuario) {
 		if (clienteUsuario instanceof Professor) {
@@ -214,7 +212,6 @@ public class Professor extends Usuario {
 
 
 
-*/
 
 
 
