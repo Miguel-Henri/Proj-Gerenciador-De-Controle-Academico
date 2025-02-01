@@ -219,12 +219,11 @@ public void CriarTurma(ArrayList<Disciplina> disciplinas, ArrayList<Turma> turma
 	} else {
 	System.out.println("Nenhuma disciplina cadastrada");
 	}
-	turmas.get(0).getProfessores();
 }
 
 	
 	
-/* 
+
 	public void ApresentarTurmas(ArrayList<Turma> turmas) {
 	    for (int i = 0; i < turmas.size(); i++) {
 	        System.out.println("TURMA " + (i + 1));
@@ -232,21 +231,14 @@ public void CriarTurma(ArrayList<Disciplina> disciplinas, ArrayList<Turma> turma
 	        System.out.println("Disciplina: " + turmas.get(i).getDisciplina().getNomeDisciplina());
 
 	        
-	        ArrayList<Professor> professores = turmas.get(i).getProfessores();
+	        Professor professores = turmas.get(i).getProfessores();
 
 	        System.out.print("Professores da turma: ");
-	        if (professores.isEmpty()) {
+	        if (professores == null) {
 	            System.out.println("Nenhum professor atribuido.");
 	        } else {
-	            for (int j = 0; j < professores.size(); j++) {
-	                System.out.print(professores.get(j).getNomeProfessor());
-	                if (j < professores.size() - 1) {
-	                    System.out.print(", ");
-	                }
-	            }
-	            System.out.println("");
+	            System.out.print(professores.getNomeProfessor());
 	        }
 	    }
 	}
- */
 }
