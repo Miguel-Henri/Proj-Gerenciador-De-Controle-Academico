@@ -5,6 +5,7 @@ git commit -m ""
 git push 
 */
 
+
 /*
 cd .\Proj-Gerenciador-De-Controle-Academico\PROJETO_EDINILSON_ATT\PROJETO_EDINILSON_ATT\src\    
 
@@ -18,7 +19,7 @@ java ClientCode
  * Esta classe é a classe que serve como uma ponte das ações do usuario para o sistema.
  * Ela permite que possoas possam logar e com base em cada tipo de login classes dedicadas a este tipo de login serão exibidas
  * 
- * @author Miguel, Tufy
+ * @author Miguel, Tufy, Gabriel, Gustavo
  */
 
 
@@ -56,6 +57,11 @@ public class ClientCode {
 			if(clienteUsuario!=null) {
 				//por exemplo se for retornado um Administrador aparecera um menu com os metodos da classe Administrador.
 				if(clienteUsuario instanceof Administrador) {
+
+					//metodo so para criar de imediato varios alunos e turmas
+					((Administrador) clienteUsuario).CriarDisciplinaProfessorAlunoTurma(Sistema.getDisciplina(), Sistema.getTurma(), Sistema.getUsuarios());
+
+
 					int escolhaAdm;
 					do {
 						System.out.println("[1] Cadastrar novo Usuario");
@@ -64,7 +70,7 @@ public class ClientCode {
 						System.out.println("[4] Criar Disciplina");
 						System.out.println("[5] Criar Turmas");
 						System.out.println("[6] Apresentar Turmas");
-
+					
 						System.out.println("[0] Sair da conta");
 						escolhaAdm = leitor.nextInt();
 						leitor.nextLine();
@@ -83,8 +89,7 @@ public class ClientCode {
 							((Administrador) clienteUsuario).criarDisciplina(Sistema.getDisciplina());
 							break;
 						case 5:
-							((Administrador) clienteUsuario).CriarTurma(Sistema.getDisciplina(),
-									Sistema.getTurma(), Sistema.getUsuarios());
+							((Administrador) clienteUsuario).CriarTurma(Sistema.getDisciplina(), Sistema.getTurma(), Sistema.getUsuarios());
 							break;
 						case 6:
 							((Administrador) clienteUsuario).ApresentarTurmas(Sistema.getTurma());

@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @author Miguel
 */
 
-public class Sistema {
+public class Sistema implements InterfaceSistema{
 	private static int rodou=0;
 	private static ArrayList<Usuario> usuarios = new ArrayList<>();
 	private static ArrayList<Turma> turmas = new ArrayList<>();

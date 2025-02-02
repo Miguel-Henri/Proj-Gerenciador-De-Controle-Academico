@@ -23,6 +23,38 @@ public class Administrador extends Usuario{
 	}
 	
 	/**
+	 * Este metodo cria varios alunos, professores, disciplinas e turmas de uma vez assim que o sistema for executado
+	 * 
+	 * @param disciplinas e o arraylist que contem todas as disciplinas criadas ate agora.
+	 * @param turmas e o arraylist que sera armazenado esta turma criada agora.
+	 * @param usuarios e o arraylist que contem todas os usuario criados ate agora.
+	 */
+	public void CriarDisciplinaProfessorAlunoTurma(ArrayList<Disciplina> disciplinas, ArrayList<Turma> turmas, ArrayList<Usuario> usuarios){
+		//criação de alunos e professores
+		Professor professor1 = new Professor("Edinilson", "123", "111", "Edinilson", "23022000");
+		Professor professor2 = new Professor("Leal", "1234", "222", "Leal", "23112000");
+		Aluno newAluno1 = new Aluno("Pedrão", "1234", "bbb", "Pedrão", "33052000");
+		Aluno newAluno2 = new Aluno("Marcelo", "12345", "333", "Marcelo", "23042000");
+		Aluno newAluno3 = new Aluno("Wesley", "123", "aaa", "Wesley", "12052000");
+		usuarios.add(newAluno1);
+		usuarios.add(newAluno2);
+		usuarios.add(newAluno3);
+		usuarios.add(professor1);
+		usuarios.add(professor2);
+
+		//criação de Disciplinas
+		Disciplina newDisci1 = new Disciplina("Fisica", "fs", "fs", 10, 10);
+		Disciplina newDisci2 = new Disciplina("Portugues", "pt", "pt", 11, 11);
+		disciplinas.add(newDisci1);
+		disciplinas.add(newDisci2);
+
+		//criação de turmas
+		Turma newTurma = new Turma("111", newDisci1,professor1);
+		turmas.add(newTurma);
+	}
+
+
+	/**
 	 * Este metodo permite a criação de novos usuarios como alunos e professores.
 	 * ele usa da classe criacao que retorna se o usuario criado vai ser um professor ou aluno.
 	 * E por fim ele cadastra no arrayList de usuarios independente se for professor ou aluno.
@@ -58,7 +90,7 @@ public class Administrador extends Usuario{
 				default: System.out.println("Opção invalida");
 			}
 		}while(user==null);
-				
+		
 		usuarios.add(user);	
 	}
 	
