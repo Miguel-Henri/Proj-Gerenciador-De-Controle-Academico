@@ -112,6 +112,30 @@ public class Turma {
     }
 
 
+    /**
+     * Este metodo exibi a quantidade de alunos.
+     * 
+     * @return retorna em numero a quantidade de alunos.
+     */
+    public int qtddDeAlunos(){
+        return alunos.size();
+    }
 
+
+    /**
+     * Este metodo vai verificar se ha o nome como argumento esta presente no arraylist de alunos da turma. caso Esteja ele retornara todas as informções deste nome.
+     * 
+     * @param nome e o nome que vai ser buscado.
+     * @return retorna um texto contendo todas as informações.
+     */
+    public String buscarAlunoPorNome(String nome){
+        for(int i = 0; i < qtddDeAlunos(); i++){
+            if(alunos.get(i).getNomeAluno().equals(nome)){    
+                return "Disciplina: " + codigoTurma + " nome: " + alunos.get(i).getNomeAluno() + " notas " + alunos.get(i).getNotas() + " Faltas: " + alunos.get(i).getFaltas();
+        
+            }
+        }
+        return "";
+    }
 
 }

@@ -107,16 +107,21 @@ public class ClientCode {
 					int escolhaAluno;
 					do {
 						System.out.println("[1]Exibir Usuario");
-						System.out.println("[2]Sair da conta");
+						System.out.println("[2]Escolher Turma");
+						System.out.println("[0]Sair da conta");
 						escolhaAluno=leitor.nextInt();
 						
 						switch(escolhaAluno) {
 						case 1:
 							//aluno escolhe em qual turma ele quer entrar...
-							((Aluno) clienteUsuario).consultarRendimento();
+							((Aluno) clienteUsuario).consultarRendimento(Sistema.getTurma(), clienteUsuario);
 							break;
 							
 						case 2:
+							((Aluno) clienteUsuario).entrarEmUmaTurma(Sistema.getTurma(), Sistema.getUsuarios(), clienteUsuario);
+							break;
+	
+						case 0:
 							clienteUsuario=null;
 							break;
 						}

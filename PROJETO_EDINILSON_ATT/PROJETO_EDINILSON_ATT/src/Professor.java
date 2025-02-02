@@ -103,13 +103,14 @@ public class Professor extends Usuario {
                     System.out.println("Cadastro da nota para o aluno " + (i + 1) + ":");
                     System.out.println("Digite o prontuario do aluno:");
                     String prontuarioAluno = leitor.nextLine();
-                    leitor.nextLine();
+//                    leitor.nextLine();
 
                     Aluno aluno = turmaSelecionada.buscarAluno(prontuarioAluno);
                     
                     if (aluno != null) {
                         System.out.println("Digite a nota para o aluno:");
                         double nota = leitor.nextDouble();
+                        leitor.nextLine();
                         aluno.adicionarNota(nota);
                         System.out.println("Nota inserida com sucesso para o aluno " + aluno.getNomeAluno());
                     } else {
@@ -149,9 +150,10 @@ public class Professor extends Usuario {
 
                     Aluno aluno = turmaSelecionada.buscarAluno(prontuarioAluno);
                     if (aluno != null) {
-                       
                         System.out.println("Digite a quantidade de faltas para o aluno:");
                         int faltas = leitor.nextInt();
+                        leitor.nextLine();
+
                         aluno.adicionarFaltas(faltas);
                         System.out.println("Faltas inseridas com sucesso para o aluno " + aluno.getNomeAluno());
                     } else {
