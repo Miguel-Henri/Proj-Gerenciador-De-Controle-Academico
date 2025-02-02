@@ -51,6 +51,11 @@ public class Administrador extends Usuario{
 		//criação de turmas
 		Turma newTurma = new Turma("111", newDisci1,professor1);
 		turmas.add(newTurma);
+		
+		//colocando alunos numa turma
+		newTurma.adicionarAluno(newAluno1);
+		newTurma.adicionarAluno(newAluno2);
+		newTurma.adicionarAluno(newAluno3);
 	}
 
 

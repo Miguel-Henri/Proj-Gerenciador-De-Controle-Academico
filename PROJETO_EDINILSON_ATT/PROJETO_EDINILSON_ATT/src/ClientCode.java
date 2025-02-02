@@ -6,7 +6,7 @@ git push
 */
 
 
-/*
+/* **
 cd .\Proj-Gerenciador-De-Controle-Academico\PROJETO_EDINILSON_ATT\PROJETO_EDINILSON_ATT\src\    
 
 javac ClientCode.java  
@@ -64,7 +64,7 @@ public class ClientCode {
 
 					int escolhaAdm;
 					do {
-						System.out.println("[1] Cadastrar novo Usuario");
+						System.out.println("\n[1] Cadastrar novo Usuario");
 						System.out.println("[2] Apresentar Usuarios");
 						System.out.println("[3] Remover Usuario");					
 						System.out.println("[4] Criar Disciplina");
@@ -112,7 +112,8 @@ public class ClientCode {
 						
 						switch(escolhaAluno) {
 						case 1:
-						
+							//aluno escolhe em qual turma ele quer entrar...
+							((Aluno) clienteUsuario).consultarRendimento();
 							break;
 							
 						case 2:

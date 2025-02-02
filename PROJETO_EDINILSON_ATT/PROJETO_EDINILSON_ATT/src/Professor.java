@@ -45,6 +45,7 @@ public class Professor extends Usuario {
      */
     public void CadastrarAvaliacao(ArrayList<Turma> turmas, Usuario clienteUsuario) {
         if (clienteUsuario instanceof Professor) {
+
             Professor professor = (Professor) clienteUsuario;
             Scanner leitor = new Scanner(System.in);
 
@@ -101,10 +102,11 @@ public class Professor extends Usuario {
                 for (int i = 0; i < quantidadeAlunos; i++) {
                     System.out.println("Cadastro da nota para o aluno " + (i + 1) + ":");
                     System.out.println("Digite o prontuario do aluno:");
-                    leitor.nextLine();
                     String prontuarioAluno = leitor.nextLine();
+                    leitor.nextLine();
 
                     Aluno aluno = turmaSelecionada.buscarAluno(prontuarioAluno);
+                    
                     if (aluno != null) {
                         System.out.println("Digite a nota para o aluno:");
                         double nota = leitor.nextDouble();
@@ -142,11 +144,12 @@ public class Professor extends Usuario {
                 for (int i = 0; i < quantidadeAlunos; i++) {
                     System.out.println("Cadastro das faltas para o aluno " + (i + 1) + ":");
                     System.out.println("Digite o prontuario do aluno:");
-                    leitor.nextLine();
                     String prontuarioAluno = leitor.nextLine();
+                    leitor.nextLine();
 
                     Aluno aluno = turmaSelecionada.buscarAluno(prontuarioAluno);
                     if (aluno != null) {
+                       
                         System.out.println("Digite a quantidade de faltas para o aluno:");
                         int faltas = leitor.nextInt();
                         aluno.adicionarFaltas(faltas);
@@ -194,6 +197,8 @@ public class Professor extends Usuario {
      * @param clienteUsuario Usuário logado (deve ser um professor).
      */
     public void ExibirRelatorioTurma(ArrayList<Turma> turmas, Usuario clienteUsuario) {
+        
+
         if (clienteUsuario instanceof Professor) {
             Professor professor = (Professor) clienteUsuario;
             for (int i = 0; i < turmas.size(); i++) {
@@ -209,6 +214,7 @@ public class Professor extends Usuario {
         } else {
             System.out.println("Apenas professores podem exibir relatorios de turma");
         }
+
     }
 
     /**
