@@ -1,4 +1,4 @@
-/*
+ /*
 git pull
 git status
 git commit -m ""
@@ -7,18 +7,29 @@ git push
 
 /*
 cd .\Proj-Gerenciador-De-Controle-Academico\PROJETO_EDINILSON_ATT\PROJETO_EDINILSON_ATT\src\    
-1
+
 javac ClientCode.java  
 
 java ClientCode
 
 */
+
+/**
+ * Esta classe é a classe que serve como uma ponte das ações do usuario para o sistema.
+ * Ela permite que possoas possam logar e com base em cada tipo de login classes dedicadas a este tipo de login serão exibidas
+ * 
+ * @author Miguel, Tufy
+ */
+
+
 import java.util.Scanner;
 public class ClientCode {
 	public static void main(String[] args) {
 		Usuario clienteUsuario=null;
 		int escolhaGeral;
 		Scanner leitor = new Scanner(System.in);
+
+		//cria e add o admin no sistemas
 		Sistema.AdicionarAdm();
 
 
@@ -32,6 +43,7 @@ public class ClientCode {
 			
 			switch (escolhaGeral) {
 			case 1:
+				// com base no tipo de usario que for retornado aqui esse usuario tera acessos a diferentes funções.
 				clienteUsuario = Sistema.Login();
 				break;
 			case 2:
@@ -42,6 +54,7 @@ public class ClientCode {
 			}
 			
 			if(clienteUsuario!=null) {
+				//por exemplo se for retornado um Administrador aparecera um menu com os metodos da classe Administrador.
 				if(clienteUsuario instanceof Administrador) {
 					int escolhaAdm;
 					do {
@@ -83,6 +96,8 @@ public class ClientCode {
 						}						
 					}while(escolhaAdm!=0);
 				}
+
+				//por exemplo se for retornado um Aluno aparecera um menu com os metodos da classe Aluno.
 				else if(clienteUsuario instanceof Aluno) {
 					int escolhaAluno;
 					do {
@@ -100,7 +115,8 @@ public class ClientCode {
 							break;
 						}
 					}while(escolhaAluno!=2);
-					
+	
+				//por exemplo se for retornado um Professor aparecera um menu com os metodos da classe Professor
 				}else if(clienteUsuario instanceof Professor) {
 					int escolhaProfessor;
 					do {
@@ -109,6 +125,7 @@ public class ClientCode {
 						System.out.println("[3]Inserir faltas");
 						System.out.println("[4]Exibir relatorio de alunos");
 						System.out.println("[5]Exibir relatorio de turma");
+						System.out.println("[0]Sair");
 						escolhaProfessor = leitor.nextInt();
 						
 						switch(escolhaProfessor) {

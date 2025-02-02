@@ -1,13 +1,34 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * A Class Administrador Contem todos os metodos que o objeto Administrador ultilizara.
+ * Permitindo entao, criar professores, alunos, disciplinas e turma. alem de mostrar ou remover usuarios.
+
+ * 
+ * @author Miguel, Tufy
+ */
+
 import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
 public class Administrador extends Usuario{
 
+	/**
+	 * Apenas implementa o metodo construtor da super classe.
+	 * 
+	 * @param Usuario e o nome do usuario para o metodo construtor da classe super.
+	 * @param Senha e a senha do usuario para o metodo construtor da classe super.
+	*/
 	public Administrador(String Usuario,String Senha) {
 		super(Usuario,Senha);
 	}
 	
+	/**
+	 * Este metodo permite a criação de novos usuarios como alunos e professores.
+	 * ele usa da classe criacao que retorna se o usuario criado vai ser um professor ou aluno.
+	 * E por fim ele cadastra no arrayList de usuarios independente se for professor ou aluno.
+	 * 
+	 * @param usuarios E o arralist de todos criados ate agora e onde vai ser add o que for criado neste metodo.
+	 */
 	public void CadastrarUsuario(ArrayList<Usuario> usuarios) {
 		int escolha;
 		Usuario user=null;
@@ -37,17 +58,20 @@ public class Administrador extends Usuario{
 				default: System.out.println("Opção invalida");
 			}
 		}while(user==null);
-		
-		
-		
-		
-		
-		usuarios.add(user);
-	
-	
-		
+				
+		usuarios.add(user);	
 	}
 	
+	/**
+	 * Este metodo cria alunos ou professores com base no argumento escolha.
+	 * 
+	 * @param usuario e o nome do usuario definido no metodo CadastrarUsuario.
+	 * @param senha e a senha do usuario definida no metodo CadastrarUsuario.
+	 * @param escolha e a escolha de qual tipo de usuario ele sera (aluno ou professor) definido no metodo CadastrarUsuario.
+	 
+	 * @return com base no parametro escolha retorna o tipo de usuario podendo ser aluno ou professor.
+	 * o que for retornado vai ser add no arraylist de usuarios.
+	 */
 	private Usuario Criacao(String usuario,String senha,int escolha) {
 		String texto=null;
 		Usuario newClientUsuario=null;
@@ -83,7 +107,11 @@ public class Administrador extends Usuario{
 	
 	
 	
-	
+	/**
+	 * Este metodo pega o parametro usuarios que é um arralist de todos os usuario criados ate agora e retorna todos.
+	 * 
+	 * @param usuarios e o arralist contendo todos os usuarios criados ate agora.
+	 */
 	public void ApresentarUsuarios(ArrayList<Usuario> usuarios) {
 		if(usuarios.size()>1) {
 			for(int i = 1;i<usuarios.size();i++) {
@@ -97,7 +125,11 @@ public class Administrador extends Usuario{
 		}
 	}
 	
-	
+	/**
+	 * Este metodo remove por meio do indice, o indice que vai ser removido é definido pelo usuario.
+	 * 
+	 * @param usuarios e o arralist contendo todos os usuarios criados ate agora.
+	 */
 	public void DeletarUsuario(ArrayList<Usuario> usuarios) {
 		Scanner leitor = new Scanner(System.in);
 		int escolha;
@@ -118,10 +150,11 @@ public class Administrador extends Usuario{
 		
 	}
 
-	/*public void criarTurma(ArrayList<Turma> turma,ArrayList<Usuario> usuarios){
-		String
-	}*/
-	
+	/**
+	 * Este metodo cria uma disciplina e a coloca no arraylist de disciplinas.
+	 * 
+	 * @param disciplinas e o arralist contendo todos as disciplinas criadas ate agora.
+	 */
 	public void criarDisciplina(ArrayList<Disciplina> disciplinas) {
 		Disciplina novaDisciplina;
 		
@@ -144,8 +177,16 @@ public class Administrador extends Usuario{
 				, totalAulas);
 		disciplinas.add(novaDisciplina);
 	}
-	
-public void CriarTurma(ArrayList<Disciplina> disciplinas, ArrayList<Turma> turmas,
+
+
+	/**
+	 * Este metodo cria turmas, mas para isso é necessario ter criado pelo menos um elemento nos arralist Disciplinas e Usuarios (pelo menos um professor).
+	 * 
+	 * @param disciplinas e o arraylist que contem todas as disciplinas criadas ate agora.
+	 * @param turmas e o arraylist que sera armazenado esta turma criada agora.
+	 * @param usuarios e o arraylist que contem todas os usuario criados ate agora.
+	 */
+	public void CriarTurma(ArrayList<Disciplina> disciplinas, ArrayList<Turma> turmas,
             ArrayList<Usuario> usuarios) {
 
 	int achouProfessores = 0;
@@ -223,7 +264,11 @@ public void CriarTurma(ArrayList<Disciplina> disciplinas, ArrayList<Turma> turma
 
 	
 	
-
+	/**
+	 * Este metodo exibi todas as turmas criadas ate agora.
+	 * 
+	 * @param turmas arraylist contendo todas as turmas criadas ate agora.
+	 */
 	public void ApresentarTurmas(ArrayList<Turma> turmas) {
 	    for (int i = 0; i < turmas.size(); i++) {
 	        System.out.println("TURMA " + (i + 1));
