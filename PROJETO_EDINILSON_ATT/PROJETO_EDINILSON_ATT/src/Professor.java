@@ -10,6 +10,7 @@ public class Professor extends Usuario {
     private String prontuario;
     private String nome;
     private String dataNascimento;
+    private int qtddDeAvaliacoes;
 
     /**
      * Construtor para criar um novo professor.
@@ -54,6 +55,7 @@ public class Professor extends Usuario {
             if (turmaSelecionada != null) {
                 System.out.println("Quantas avaliacoes deseja cadastrar para a turma " + turmaSelecionada.getCodigoTurma() + "?");
                 int quantidadeAvaliacoes = leitor.nextInt();
+                this.qtddDeAvaliacoes = quantidadeAvaliacoes;
 
                 // Cadastro das avaliações para a turma
                 for (int i = 0; i < quantidadeAvaliacoes; i++) {
@@ -78,6 +80,9 @@ public class Professor extends Usuario {
         } else {
             System.out.println("Apenas professores podem cadastrar avaliacoes");
         }
+
+
+
     }
 
 
@@ -94,38 +99,46 @@ public class Professor extends Usuario {
             Professor professor = (Professor) clienteUsuario;
             Scanner leitor = new Scanner(System.in);
     
-        
             Turma turmaSelecionada = selecionarTurma(turmas, professor, leitor);
             if (turmaSelecionada == null) {
                 System.out.println("Nenhuma turma selecionada.");
-                
-            }else{
+            } else {
                 System.out.println("Alunos da turma " + turmaSelecionada.getCodigoTurma() + ":");
                 for (Aluno aluno : turmaSelecionada.getAlunos()) {
                     System.out.println("Nome: " + aluno.getNomeAluno() + " | Prontuario: " + aluno.getProntuarioAluno());
                 }
-        
-                
+    
                 System.out.println("Digite o prontuario do aluno:");
                 leitor.nextLine();
                 String prontuarioAluno = leitor.nextLine(); 
-               
-        
+    
                 Aluno aluno = turmaSelecionada.buscarAluno(prontuarioAluno);
-        
-                if (aluno != null && existeAvaliacao(turmaSelecionada)) {
+    
+                if (aluno != null) {
+                    System.out.println("Avaliações disponíveis:");
+                    for (Avaliacao avaliacao : turmaSelecionada.getAvaliacoes()) {
+                        System.out.println("Avaliação: " + avaliacao.getNome() + " | Peso: " + avaliacao.getPeso());
+                    }
+    
+                    System.out.println("Digite o nome da avaliação:");
+                    String nomeAvaliacao = leitor.nextLine();
+    
                     System.out.println("Digite a nota do aluno:");
-                    int nota = leitor.nextInt();
-                    aluno.adicionarNota(nota);
-                    System.out.println("Nota inserida com sucesso para " + aluno.getNomeAluno());
+                    double nota = leitor.nextDouble();
+                    leitor.nextLine();
+                    aluno.adicionarNota(nomeAvaliacao, nota, turmaSelecionada.getAvaliacoes(), this.qtddDeAvaliacoes);
+                    System.out.println("Nota inserida com sucesso para " + aluno.getNomeAluno() + " na avaliação " + nomeAvaliacao);
                 } else {
-                    System.out.println("Aluno nao encontrado na turma.");
+                    System.out.println("Aluno não encontrado na turma.");
                 }
             }
         } else {
             System.out.println("Apenas professores podem inserir notas.");
         }
     }
+    
+
+    
 
 
 
@@ -287,6 +300,5 @@ public class Professor extends Usuario {
         return false;
     }
 }
-
 
 

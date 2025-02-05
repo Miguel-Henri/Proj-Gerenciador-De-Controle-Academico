@@ -80,6 +80,9 @@ public class Turma {
      */
     public void setAvaliacoes(Avaliacao newAvaliacoes) {
         avaliacoes.add(newAvaliacoes);
+        for(int i = 0; i < avaliacoes.size(); i++){
+            System.out.println("nome da avaliacao: " + avaliacoes.get(i).getNome() + " peso: " + avaliacoes.get(i).getPeso());
+        }
     }
 
     /**

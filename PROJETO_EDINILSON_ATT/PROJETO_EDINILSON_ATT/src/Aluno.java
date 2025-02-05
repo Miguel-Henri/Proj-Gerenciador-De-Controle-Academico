@@ -12,8 +12,8 @@ public class Aluno extends Usuario {
     private String nome;
     private String dataNascimento;
     private ArrayList<Double> notas;
+    private ArrayList<Avaliacao> avaliacoes;
     private int faltas;
-
     private Turma turma; 
 
     /**
@@ -31,6 +31,7 @@ public class Aluno extends Usuario {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.notas = new ArrayList<>();
+        this.avaliacoes = new ArrayList<>();
         this.faltas = 0;
         this.turma = null;
     }
@@ -105,14 +106,46 @@ public class Aluno extends Usuario {
     }
 
     /**
-     * Adiciona uma nova nota ao histórico do aluno.
+     * Adiciona uma nova avaliação ao histórico do aluno.
+     * 
+     * @param avaliacao A avaliação a ser registrada.
+     */
+    public void adicionarAvaliacao(Avaliacao avaliacao) {
+        avaliacoes.add(avaliacao);
+        System.out.println("Avaliação " + avaliacao.getNome() + " adicionada para o aluno " + nome);
+    }
+
+    /**
+     * Adiciona uma nova nota a uma avaliação específica do aluno.
      * 
      * @param nota A nota a ser registrada.
      */
-    public void adicionarNota(double nota) {
-        notas.add(nota);
-        System.out.println("Nota de " + nome + " registrada: " + nota);
+    public void adicionarNota(String nomeAvaliacao, double nota, ArrayList<Avaliacao> avaliacoesAqui, int quantidadeAvaliacoesMaxima) {
+        for (int i = 0; i < avaliacoesAqui.size(); i++) {
+            Avaliacao avaliacao = avaliacoesAqui.get(i);
+            if (avaliacao.getNome().equals(nomeAvaliacao)) {
+                // Substitui a nota existente ou adiciona se não houver
+                if (i < notas.size()) {
+                    notas.set(i, nota);
+                } else {
+                    notas.add(nota);
+                }
+    
+                System.out.println("Nota " + nota + " registrada para a avaliação " + nomeAvaliacao + " do aluno " + nome);
+
+                /**
+                 *  // Remover notas excedentes
+                while (notas.size() > quantidadeAvaliacoesMaxima) {
+                    notas.remove(notas.size() - 1);
+                }
+    
+                 */
+                return;
+            }
+        }
+        System.out.println("Avaliação " + nomeAvaliacao + " não encontrada para o aluno " + nome);
     }
+    
 
     /**
      * Adiciona faltas ao histórico do aluno.
@@ -136,7 +169,6 @@ public class Aluno extends Usuario {
     public ArrayList<Double> getNotas() {
         return notas;
     }
-
 
     /**
      * Este metodo permite que o Usuario posso escolher em qual turma ele vai querer entrar.
