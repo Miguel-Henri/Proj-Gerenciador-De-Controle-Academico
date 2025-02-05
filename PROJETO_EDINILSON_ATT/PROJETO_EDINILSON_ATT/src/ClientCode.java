@@ -27,7 +27,7 @@ import java.util.Scanner;
 public class ClientCode {
 	public static void main(String[] args) {
 		Usuario clienteUsuario=null;
-		int escolhaGeral;
+		int escolhaGeral, soPodecriarUmaVez = 0;
 		Scanner leitor = new Scanner(System.in);
 
 		//cria e add o admin no sistemas
@@ -58,8 +58,11 @@ public class ClientCode {
 				//por exemplo se for retornado um Administrador aparecera um menu com os metodos da classe Administrador.
 				if(clienteUsuario instanceof Administrador) {
 
-					//metodo so para criar de imediato varios alunos e turmas
-					((Administrador) clienteUsuario).CriarDisciplinaProfessorAlunoTurma(Sistema.getDisciplina(), Sistema.getTurma(), Sistema.getUsuarios());
+					if(soPodecriarUmaVez == 0){
+						//metodo so para criar de imediato varios alunos e turmas
+						((Administrador) clienteUsuario).CriarDisciplinaProfessorAlunoTurma(Sistema.getDisciplina(), Sistema.getTurma(), Sistema.getUsuarios());
+						soPodecriarUmaVez++;
+					}
 
 
 					int escolhaAdm;

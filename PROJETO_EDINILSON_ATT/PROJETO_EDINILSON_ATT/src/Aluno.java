@@ -116,9 +116,12 @@ public class Aluno extends Usuario {
     }
 
     /**
-     * Adiciona uma nova nota a uma avaliação específica do aluno.
+     *  * Adiciona uma nova nota a uma avaliação específica do aluno.
      * 
      * @param nota A nota a ser registrada.
+     * @param nomeAvaliacao nota que sera add ou colocada 
+     * @param avaliacoesAqui todas as avaliações ate agora criadas 
+     * @param quantidadeAvaliacoesMaxima o maximo de avaliações da turma 
      */
     public void adicionarNota(String nomeAvaliacao, double nota, ArrayList<Avaliacao> avaliacoesAqui, int quantidadeAvaliacoesMaxima) {
         for (int i = 0; i < avaliacoesAqui.size(); i++) {
