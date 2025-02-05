@@ -5,7 +5,7 @@ import java.util.Scanner;
  * A classe Sistema e a classe que contem os principais ArrayList desta aplicação. 
  * Alem disso ela foi usada para que de imediato criar no sistema o administrador que é responsavel pela criação de usuarios, turmas....
  * Ademais ela nos permite indentificar qual o tipo de usuario é e logalo no sistema e retorna-lo.
- * @author Miguel
+ * @author Miguel, Tufy
 */
 
 public class Sistema implements InterfaceSistema{

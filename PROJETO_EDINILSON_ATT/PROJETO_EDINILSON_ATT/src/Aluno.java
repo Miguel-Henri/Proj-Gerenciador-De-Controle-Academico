@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * Representa um aluno no sistema, com informações como prontuário, nome, data de nascimento,
  * notas e faltas. A classe permite o cadastro de notas, faltas e consulta ao desempenho do aluno.
- * @author Tufy, Gabriel, Miguel
+ * @author Tufy, Gabriel, Miguel, Gustavo
  */
 public class Aluno extends Usuario {
     
@@ -101,25 +101,7 @@ public class Aluno extends Usuario {
             }
         }
 
-        /*
-         * 
-         if (this.turma == null) {
-            System.out.println("O aluno não está matriculado em nenhuma turma.");
-            return;
-        }
-        
-        System.out.println("Rendimento do aluno " + nome + ":");
-        System.out.println("Faltas: " + faltas);
-        
-        System.out.println("Notas: ");
-        if (notas.isEmpty()) {
-            System.out.println("Nenhuma nota registrada.");
-        } else {
-            for (int i = 0; i < notas.size(); i++) {
-                System.out.println("Nota " + (i + 1) + ": " + notas.get(i));
-            }
-        }
-        */
+       
     }
 
     /**

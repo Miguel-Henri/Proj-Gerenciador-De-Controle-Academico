@@ -89,13 +89,24 @@ public class Turma {
      * @return O aluno encontrado ou null caso não seja encontrado.
      */
     public Aluno buscarAluno(String prontuario) {
-        for (int i = 0; i < alunos.size(); i++) {
-            if (alunos.get(i).getProntuarioAluno().equals(prontuario)) {
-                return alunos.get(i);
+
+        System.out.println("Buscando aluno com prontuário: [" + prontuario + "]");
+
+    
+        for (Aluno aluno : alunos) {
+            String prontuarioAluno = aluno.getProntuarioAluno();
+            System.out.println("Verificando aluno: " + aluno.getNomeAluno() + " | Prontuário armazenado: [" + prontuarioAluno + "]");
+    
+            if (prontuarioAluno.equalsIgnoreCase(prontuario)) {
+                System.out.println("Aluno encontrado!");
+                return aluno;
             }
         }
-        return null; 
+    
+        System.out.println("Aluno não encontrado!");
+        return null;
     }
+    
 
     /**
      * Adiciona um aluno à turma, caso não esteja matriculado.

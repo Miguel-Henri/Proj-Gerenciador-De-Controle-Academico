@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Permitindo entao, criar professores, alunos, disciplinas e turma. alem de mostrar ou remover usuarios.
 
  * 
- * @author Miguel, Tufy
+ * @author Miguel
  */
 
 import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;

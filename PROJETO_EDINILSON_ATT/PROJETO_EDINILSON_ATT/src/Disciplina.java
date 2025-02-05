@@ -2,7 +2,7 @@
  * Classe responsável por representar uma disciplina.
  * Contém informações sobre o nome, sigla, ementa, carga horária e número de aulas.
  * 
- * @author Gabriel
+ * @author Gabriel, Miguel
  */
 public class Disciplina {
 

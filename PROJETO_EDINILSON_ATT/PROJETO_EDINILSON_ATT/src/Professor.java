@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * Classe que representa um Professor no sistema.
  * O professor pode cadastrar avaliações, inserir notas e faltas, e gerar relatórios sobre alunos e turmas.
- * @author Tufy
+ * @author Tufy, Miguel
  */
 public class Professor extends Usuario {
     private String prontuario;
@@ -80,6 +80,9 @@ public class Professor extends Usuario {
         }
     }
 
+
+
+
     /**
      * Insere notas para os alunos de uma turma específica.
      * 
@@ -90,38 +93,42 @@ public class Professor extends Usuario {
         if (clienteUsuario instanceof Professor) {
             Professor professor = (Professor) clienteUsuario;
             Scanner leitor = new Scanner(System.in);
-
-            // Escolha da turma em que as notas serão inseridas
+    
+        
             Turma turmaSelecionada = selecionarTurma(turmas, professor, leitor);
-            if (turmaSelecionada != null) {
-                System.out.println("Quantos alunos deseja cadastrar notas para a turma " + turmaSelecionada.getCodigoTurma() + "?");
-                int quantidadeAlunos = leitor.nextInt();
+            if (turmaSelecionada == null) {
+                System.out.println("Nenhuma turma selecionada.");
+                
+            }else{
+                System.out.println("Alunos da turma " + turmaSelecionada.getCodigoTurma() + ":");
+                for (Aluno aluno : turmaSelecionada.getAlunos()) {
+                    System.out.println("Nome: " + aluno.getNomeAluno() + " | Prontuario: " + aluno.getProntuarioAluno());
+                }
+        
+                
+                System.out.println("Digite o prontuario do aluno:");
                 leitor.nextLine();
-
-                // Cadastro das notas para os alunos
-                for (int i = 0; i < quantidadeAlunos; i++) {
-                    System.out.println("Cadastro da nota para o aluno " + (i + 1) + ":");
-                    System.out.println("Digite o prontuario do aluno:");
-                    String prontuarioAluno = leitor.nextLine();
-//                    leitor.nextLine();
-
-                    Aluno aluno = turmaSelecionada.buscarAluno(prontuarioAluno);
-                    
-                    if (aluno != null) {
-                        System.out.println("Digite a nota para o aluno:");
-                        double nota = leitor.nextDouble();
-                        leitor.nextLine();
-                        aluno.adicionarNota(nota);
-                        System.out.println("Nota inserida com sucesso para o aluno " + aluno.getNomeAluno());
-                    } else {
-                        System.out.println("Aluno nao encontrado na turma.");
-                    }
+                String prontuarioAluno = leitor.nextLine(); 
+               
+        
+                Aluno aluno = turmaSelecionada.buscarAluno(prontuarioAluno);
+        
+                if (aluno != null && existeAvaliacao(turmaSelecionada)) {
+                    System.out.println("Digite a nota do aluno:");
+                    int nota = leitor.nextInt();
+                    aluno.adicionarNota(nota);
+                    System.out.println("Nota inserida com sucesso para " + aluno.getNomeAluno());
+                } else {
+                    System.out.println("Aluno nao encontrado na turma.");
                 }
             }
         } else {
             System.out.println("Apenas professores podem inserir notas.");
         }
     }
+
+
+
 
     /**
      * Insere faltas para os alunos de uma turma específica.
@@ -133,38 +140,47 @@ public class Professor extends Usuario {
         if (clienteUsuario instanceof Professor) {
             Professor professor = (Professor) clienteUsuario;
             Scanner leitor = new Scanner(System.in);
-
-            // Escolha da turma em que as faltas serão inseridas
+    
+        
             Turma turmaSelecionada = selecionarTurma(turmas, professor, leitor);
-            if (turmaSelecionada != null) {
-                System.out.println("Quantos alunos deseja cadastrar faltas para a turma " + turmaSelecionada.getCodigoTurma() + "?");
-                int quantidadeAlunos = leitor.nextInt();
+            if (turmaSelecionada == null) {
+                System.out.println("Nenhuma turma selecionada.");
+                
+            }else{
+                System.out.println("Alunos da turma " + turmaSelecionada.getCodigoTurma() + ":");
+                for (Aluno aluno : turmaSelecionada.getAlunos()) {
+                    System.out.println("Nome: " + aluno.getNomeAluno() + " | Prontuario: " + aluno.getProntuarioAluno());
+                }
+        
+                
+                System.out.println("Digite o prontuario do aluno:");
                 leitor.nextLine();
-
-                // Cadastro das faltas para os alunos
-                for (int i = 0; i < quantidadeAlunos; i++) {
-                    System.out.println("Cadastro das faltas para o aluno " + (i + 1) + ":");
-                    System.out.println("Digite o prontuario do aluno:");
-                    String prontuarioAluno = leitor.nextLine();
-                    leitor.nextLine();
-
-                    Aluno aluno = turmaSelecionada.buscarAluno(prontuarioAluno);
-                    if (aluno != null) {
-                        System.out.println("Digite a quantidade de faltas para o aluno:");
-                        int faltas = leitor.nextInt();
-                        leitor.nextLine();
-
-                        aluno.adicionarFaltas(faltas);
-                        System.out.println("Faltas inseridas com sucesso para o aluno " + aluno.getNomeAluno());
-                    } else {
-                        System.out.println("Aluno nao encontrado na turma.");
-                    }
+                String prontuarioAluno = leitor.nextLine(); 
+               
+        
+                Aluno aluno = turmaSelecionada.buscarAluno(prontuarioAluno);
+        
+                if (aluno != null) {
+                    System.out.println("Digite a quantidade de faltas:");
+                    int faltas = leitor.nextInt();
+                    aluno.adicionarFaltas(faltas);
+                    System.out.println("Faltas inseridas com sucesso para " + aluno.getNomeAluno());
+                } else {
+                    System.out.println("Aluno nao encontrado na turma.");
                 }
             }
         } else {
             System.out.println("Apenas professores podem inserir faltas.");
         }
     }
+    
+               
+
+                   
+                  
+
+
+
 
     /**
      * Exibe um relatório com informações sobre os alunos de uma turma.
@@ -254,4 +270,23 @@ public class Professor extends Usuario {
         return turmasDoProfessor.get(opcaoTurma - 1);
 		
     }
+
+
+
+    
+    /**
+     * Verifica se existe alguma avaliação cadastrada na turma.
+     * 
+     * @param turma Turma que será verificada.
+     * @return true se houver avaliações cadastradas, false caso contrário.
+     */
+    private boolean existeAvaliacao(Turma turma) {
+        if (turma.getAvaliacoes() != null) {
+            return true;
+        }
+        return false;
+    }
 }
+
+
+

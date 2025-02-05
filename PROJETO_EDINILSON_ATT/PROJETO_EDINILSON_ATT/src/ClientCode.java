@@ -125,7 +125,7 @@ public class ClientCode {
 							clienteUsuario=null;
 							break;
 						}
-					}while(escolhaAluno!=2);
+					}while(escolhaAluno!=0);
 	
 				//por exemplo se for retornado um Professor aparecera um menu com os metodos da classe Professor
 				}else if(clienteUsuario instanceof Professor) {

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 /**
  * Esta classe serve como uma interface para os metodos da classe Sistema
- * @author Gabriel, Miguel
+ * @author Gabriel
  */
 public interface InterfaceSistema {
 
