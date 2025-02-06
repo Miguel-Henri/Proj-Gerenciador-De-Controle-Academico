@@ -1,4 +1,6 @@
- /*
+
+
+/*
 git pull
 git status
 git commit -m ""
@@ -111,6 +113,7 @@ public class ClientCode {
 					do {
 						System.out.println("[1]Exibir Usuario");
 						System.out.println("[2]Escolher Turma");
+						System.out.println("[3]Mostrar Media");
 						System.out.println("[0]Sair da conta");
 						escolhaAluno=leitor.nextInt();
 						
@@ -122,6 +125,10 @@ public class ClientCode {
 							
 						case 2:
 							((Aluno) clienteUsuario).entrarEmUmaTurma(Sistema.getTurma(), Sistema.getUsuarios(), clienteUsuario);
+							break;
+
+						case 3:
+							((Aluno) clienteUsuario).situacaoEstudante(Sistema.getUsuarios(), clienteUsuario);
 							break;
 	
 						case 0:
@@ -139,6 +146,7 @@ public class ClientCode {
 						System.out.println("[3]Inserir faltas");
 						System.out.println("[4]Exibir relatorio de alunos");
 						System.out.println("[5]Exibir relatorio de turma");
+						System.out.println("[6]Calcular nota aluno");
 						System.out.println("[0]Sair");
 						escolhaProfessor = leitor.nextInt();
 						
@@ -157,12 +165,15 @@ public class ClientCode {
 							break;
 						case 5:
 							((Professor) clienteUsuario).ExibirRelatorioTurma(Sistema.getTurma(), clienteUsuario);
-							break;							
+							break;				
+						case 6:
+							((Professor) clienteUsuario).calculaMedia(Sistema.getTurma(), clienteUsuario);
+						break;					
 						default:
 							break;
 						}
 						
-					}while(escolhaProfessor > 0 && escolhaProfessor < 6);
+					}while(escolhaProfessor > 0 && escolhaProfessor < 7);
 				}
 				
 				

@@ -15,6 +15,7 @@ public class Aluno extends Usuario {
     private ArrayList<Avaliacao> avaliacoes;
     private int faltas;
     private Turma turma; 
+    private double nota;
 
     /**
      * Construtor para criar um novo aluno.
@@ -34,6 +35,7 @@ public class Aluno extends Usuario {
         this.avaliacoes = new ArrayList<>();
         this.faltas = 0;
         this.turma = null;
+        this.nota = 0;
     }
 
     // Métodos de acesso
@@ -55,6 +57,33 @@ public class Aluno extends Usuario {
     public String getNomeAluno() {
         return nome;
     }
+
+
+
+     /**
+     * Obtém a lista de notas do aluno.
+     * 
+     * @return A lista de notas do aluno.
+     */
+    public ArrayList<Double> getNotas() {
+        return notas;
+    }
+
+
+       /**
+     * Altera a nota do aluno.
+     * 
+     * @return A nota do aluno.
+     */
+    public void setNota(double nota) {
+        this.nota += nota;
+    }
+
+
+
+
+
+    
 
     /**
      * Obtém a data de nascimento do aluno.
@@ -115,6 +144,8 @@ public class Aluno extends Usuario {
         System.out.println("Avaliação " + avaliacao.getNome() + " adicionada para o aluno " + nome);
     }
 
+
+
     /**
      *  * Adiciona uma nova nota a uma avaliação específica do aluno.
      * 
@@ -136,19 +167,21 @@ public class Aluno extends Usuario {
     
                 System.out.println("Nota " + nota + " registrada para a avaliação " + nomeAvaliacao + " do aluno " + nome);
 
-                /**
-                 *  // Remover notas excedentes
-                while (notas.size() > quantidadeAvaliacoesMaxima) {
-                    notas.remove(notas.size() - 1);
-                }
-    
-                 */
+             
                 return;
             }
         }
         System.out.println("Avaliação " + nomeAvaliacao + " não encontrada para o aluno " + nome);
     }
     
+
+
+
+
+
+
+
+
 
     /**
      * Adiciona faltas ao histórico do aluno.
@@ -164,14 +197,7 @@ public class Aluno extends Usuario {
         }
     }
 
-    /**
-     * Obtém a lista de notas do aluno.
-     * 
-     * @return A lista de notas do aluno.
-     */
-    public ArrayList<Double> getNotas() {
-        return notas;
-    }
+
 
     /**
      * Este metodo permite que o Usuario posso escolher em qual turma ele vai querer entrar.
@@ -208,4 +234,33 @@ public class Aluno extends Usuario {
         System.out.println("Aluno adicionado à turma com sucesso!");
 
     }
+
+
+    public void situacaoEstudante(ArrayList<Usuario> usuarios, Usuario clienteUsuario){
+        int indice = 0;
+        for(int i = 0; i < usuarios.size(); i++){
+            if(usuarios.get(i).getUsuario().equals(clienteUsuario.getUsuario())){
+                indice = i;
+                i = usuarios.size();
+            }
+        }
+        Aluno aluno =  (Aluno) usuarios.get(indice);
+
+
+        System.out.println("\nSua media e: " + aluno.nota);
+        if(aluno.nota >= 6){
+            System.out.println("Aprovado!\n");
+        }else if(aluno.nota >= 4 && aluno.nota < 6){
+            System.out.println("Esta de IFA!\n");
+        }else{
+            System.out.println("Reprovado!\n");
+        }
+    }
+
+
+
+
+    
+
+    
 }

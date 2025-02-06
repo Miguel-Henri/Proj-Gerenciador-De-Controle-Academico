@@ -9,7 +9,7 @@ import java.util.Scanner;
  * @author Miguel
  */
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
+
 public class Administrador extends Usuario{
 
 	/**
@@ -292,7 +292,7 @@ public class Administrador extends Usuario{
 		} else {
 		System.out.println("Nenhuma disciplina cadastrada");
 		}
-}
+	}
 
 	
 	
@@ -318,4 +318,9 @@ public class Administrador extends Usuario{
 	        }
 	    }
 	}
+
+
+
+
+
 }

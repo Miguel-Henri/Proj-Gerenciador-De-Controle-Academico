@@ -114,7 +114,7 @@ public class Professor extends Usuario {
     
                 Aluno aluno = turmaSelecionada.buscarAluno(prontuarioAluno);
     
-                if (aluno != null) {
+                if (aluno != null ) {
                     System.out.println("Avaliações disponíveis:");
                     for (Avaliacao avaliacao : turmaSelecionada.getAvaliacoes()) {
                         System.out.println("Avaliação: " + avaliacao.getNome() + " | Peso: " + avaliacao.getPeso());
@@ -127,7 +127,7 @@ public class Professor extends Usuario {
                     double nota = leitor.nextDouble();
                     leitor.nextLine();
                     aluno.adicionarNota(nomeAvaliacao, nota, turmaSelecionada.getAvaliacoes(), this.qtddDeAvaliacoes);
-                    System.out.println("Nota inserida com sucesso para " + aluno.getNomeAluno() + " na avaliação " + nomeAvaliacao);
+                   
                 } else {
                     System.out.println("Aluno não encontrado na turma.");
                 }
@@ -221,6 +221,10 @@ public class Professor extends Usuario {
         }
     }
 
+
+
+    
+
     /**
      * Exibe um relatório com informações sobre uma turma.
      * 
@@ -247,6 +251,67 @@ public class Professor extends Usuario {
         }
 
     }
+
+
+
+    /**
+     * Método publico para calcular a media de aluno especifico.
+     * 
+     * @param turmas Lista de turmas disponíveis no sistema.
+     * @param clienteUsuario Professor que está selecionando a turma.
+     * @param leitor Scanner para leitura da entrada do usuário.
+
+     */
+    public void calculaMedia(ArrayList<Turma> turmas, Usuario clienteUsuario) {
+        if (clienteUsuario instanceof Professor || clienteUsuario instanceof Aluno) {
+            Professor professor = (Professor) clienteUsuario;
+            Scanner leitor = new Scanner(System.in);
+    
+            Turma turmaSelecionada = selecionarTurma(turmas, professor, leitor);
+    
+            if (turmaSelecionada == null  || turmaSelecionada.getAvaliacoes() == null) {
+                System.out.println("Nenhuma turma selecionada ou sem avaliacoes cadastradas.");
+            } else {
+                System.out.println("Alunos da turma " + turmaSelecionada.getCodigoTurma() + ":");
+                for (Aluno aluno : turmaSelecionada.getAlunos()) {
+                    System.out.println("Nome: " + aluno.getNomeAluno() + " | Prontuario: " + aluno.getProntuarioAluno());
+                }
+    
+                System.out.println("Digite o prontuario do aluno:");
+                leitor.nextLine();
+                String prontuarioAluno = leitor.nextLine();
+    
+                Aluno aluno = turmaSelecionada.buscarAluno(prontuarioAluno);
+
+                if (aluno != null) {
+
+                    double somaNotasComPesos = 0;
+                    double somaPesos = 0;
+
+
+                    for (int i = 0; i < turmaSelecionada.getAvaliacoes().size(); i++) {
+                        Avaliacao avaliacao = turmaSelecionada.getAvaliacoes().get(i);
+                        double nota = aluno.getNotas().get(i);
+                        double peso = avaliacao.getPeso();
+                        somaNotasComPesos += nota * peso; 
+                        somaPesos += peso; 
+                    }
+    
+                   
+                    double mediaPonderada = somaNotasComPesos / somaPesos;
+                    System.out.println("Média ponderada do aluno " + aluno.getNomeAluno() + ": " + mediaPonderada);
+                    aluno.setNota(mediaPonderada);
+
+                } else {
+                    System.out.println("Aluno não encontrado na turma.");
+                }
+                
+            }
+        }
+    }
+
+
+
 
     /**
      * Método privado para selecionar uma turma do professor.
@@ -286,19 +351,14 @@ public class Professor extends Usuario {
 
 
 
+
+
     
-    /**
-     * Verifica se existe alguma avaliação cadastrada na turma.
-     * 
-     * @param turma Turma que será verificada.
-     * @return true se houver avaliações cadastradas, false caso contrário.
-     */
-    private boolean existeAvaliacao(Turma turma) {
-        if (turma.getAvaliacoes() != null) {
-            return true;
-        }
-        return false;
-    }
+
+
+
+    
+    
 }
 
 

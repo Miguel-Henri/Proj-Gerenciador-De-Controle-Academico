@@ -1,3 +1,5 @@
+
+
 /**
  * Representa o usuario no sistema, com informações de usuario e senha.
  * A classe nos permite recuperar os valores: nome de usuario e senha, de cada usuario no sistema.
